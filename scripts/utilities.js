@@ -27,29 +27,6 @@ function createCollection(data, newPath) {
 }
 
 
-function buildCarousel(imgCollection, imgThumbnails, activeIdx) {
-    buildCollectionDOM(imgCollection, CAROUSEL_IMG_ID, activeIdx);
-    buildCollectionDOM(imgThumbnails, THUMBNAIL_IMG_ID, activeIdx);
-}
-
-
-function buildCollectionDOM(collectionArray, containerDomId, activeIndex) {
-    const container = document.getElementById(containerDomId);
-    const classDom = containerDomId === CAROUSEL_IMG_ID ? IMG_CLASS_LIST : THUMBNAIL_CLASS_LIST;
-
-    for(let element of collectionArray) {
-        const image = document.createElement('img');
-        image.src = element.url;
-        image.alt = element.title + ': ' + element.description;
-        image.classList.add(...classDom);
-        if (collectionArray.indexOf(element) === activeIndex) {
-            image.classList.add('active');
-        }
-        container.append(image);
-    }
-}
-
-
 function generateImagePath (folderPath, imgFormat, imageIndex) {
     if(folderPath === undefined || folderPath === '' || folderPath === null) return null;
     imageIndex++; // Necessary because the images start counting from 01 instead of 00
@@ -58,29 +35,40 @@ function generateImagePath (folderPath, imgFormat, imageIndex) {
     return url;
 } 
 
-
+/*
 function moveCarousel (imgs, nav, direction) {
+    // Clear previous Animation
+    clearInterval(autoSlideInterval);
+
     for (let imgIdx = 0; imgIdx < imgs.length; imgIdx++) {
         console.log('DEBUG - renderImages: OK!');
         // Define direction: 
         direction = (direction === 'previous' || direction === 'back' || direction === -1) ? -1 : 1;
 
         // Find currently active image
-        if (imgs[imgIdx].classList.contains('active') ) {
-            // When active image is found we need to make sure the new image will not be out of bounds
-            activeImgIdx = getNextIndex(imgs, imgIdx, direction);
+        if (!imgs[imgIdx].classList.contains('active')) continue;
 
-            // Activate new image on carousel trhough position
-            imgs[activeImgIdx].classList.add('active');
-            nav[activeImgIdx].classList.add('active');
+        // When active image is found we need to make sure the new image will not be out of bounds
+        activeImgIdx = getNextIndex(imgs, imgIdx, direction);
 
-            // Remove previously active image
-            imgs[imgIdx].classList.remove('active');
-            nav[imgIdx].classList.remove('active');
-            break;
-        }
+        // Activate new image on carousel trhough position
+        imgs[activeImgIdx].classList.add('active');
+        nav[activeImgIdx].classList.add('active');
+
+        // Remove previously active image
+        imgs[imgIdx].classList.remove('active');
+        nav[imgIdx].classList.remove('active');
+        break;   
     }
+
+    autoSlideInterval = setInterval(autoSlide, SLIDE_TIMER);
 }
+*/
+
+// function autoSlide (imgs, nav) {
+//     const direction = isSlideForward ? 'next' : 'previous';
+//     moveCarousel(imgs, nav, direction);
+// }
 
 
 function getNextIndex(array, index, change) {

@@ -34,8 +34,9 @@ function generateImagePath (folderPath, imgFormat, imageIndex) {
     return url;
 } 
 
-
 function getNextIndex(array, index, change) {
+    change = (change === 'previous' || change === 'back' || change === -1) ? -1 : 1;
+
     switch (index + change) {
         case (array.length): {
             return 0; // Next image would be out of bounds, so it goes back to the beginning

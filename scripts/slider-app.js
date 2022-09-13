@@ -21,30 +21,36 @@ const sliderConfig = {
         carouselNavImg: [],
 
         activeImgIdx: 0,
+
+        isForwardDir: true,
+        autoSlideInterval,
+        isAutoSliderOn: true,
     },
 
     methods: {
         // Active Image
         activeImg: function (index) {
-            console.log('DEBUG - ELEMENT', index, this.activeImgIdx);
             return (index === this.activeImgIdx) ? 'active' : '';
         },
 
         // Next and Previous Buttons
-        next: function() {
-            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, 1);
-            console.log('DEBUG - Next', this.activeImgIdx);
-        },
-
-        previous: function() {
-            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, -1);
-            console.log('DEBUG - Previous', this.activeImgIdx);
+        moveImg: function(direction) {
+            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, direction);
         },
 
         thumbNavClick: function(index) {
             this.activeImgIdx = index;
-        }
+        },
+
         // Function Autoplay
+        autoSlider: function() {
+            if(this.isAutoSliderOn) {
+                let direction = isSlideForward ? 'next' : 'previous';
+                this.autoSlideInterval = setInterval(this.moveImg, SLIDE_TIMER, direction);
+            } else {
+                clearInterval(autoSlideInterval);
+            }
+        }
     },
 
     // After HTML has been mounted
@@ -52,6 +58,8 @@ const sliderConfig = {
         // DOM Elements
         this.carouselImg.push(...document.querySelectorAll('.ms_carousel-img'));
         this.carouselNavImg.push(...document.querySelectorAll('.ms_carousel-nav-img'));
+
+        this.autoSlider();
     },
 };
 

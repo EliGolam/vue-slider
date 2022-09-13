@@ -2,6 +2,8 @@
 
 ## Versions
 
+### 0.9.7: Re-Added auto Slider
+
 ### 0.9.6: Readded Thumbnail navigation
 
 ### 0.9.5: Refactored next and previous functions in VueJS app

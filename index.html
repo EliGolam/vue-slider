@@ -64,7 +64,7 @@
                 <!--#region carousel-buttons -->
                 <div class="ms_carousel-buttons"> 
                     <!-- Slider previous button -->
-                    <div @click="previous" class="ms_previous-button">
+                    <div @click="moveImg('previous')" class="ms_previous-button">
                         <button class="ms_carousel-btn ms_previous-left btn btn-primary" type="button" role="button" aria-label="Previous">
                             <svg class="bi bi-chevron-left" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
@@ -78,7 +78,7 @@
                     </div>
 
                     <!-- Slider next button -->
-                    <div @click="next" class="ms_next-button">
+                    <div @click="moveImg('next')" class="ms_next-button">
                         <button class="ms_carousel-btn ms_next-right btn btn-primary" type="button" role="button" aria-label="Next">
                             <svg class="bi bi-chevron-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>

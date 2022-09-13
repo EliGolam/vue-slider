@@ -2,6 +2,8 @@
 console.log('DEBUG - utilities.js: OK!');
 
 // OBJECTS
+// Image Class: This allows to dynamically add images to the image folder without needing to 
+// re-write any code outside of image-data.js
 class Image {
     constructor(title, description, url) {
         this.title = title;

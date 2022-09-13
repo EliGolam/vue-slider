@@ -20,11 +20,13 @@ const sliderConfig = {
         carouselImg: [],
         carouselNavImg: [],
 
+        // Keep track of the active image through its index
         activeImgIdx: 0,
 
+        // Auto Slider Settings
         isForwardDir: true,
-        autoSlideInterval,
         isAutoSliderOn: true,
+        autoSlideInterval,
     },
 
     methods: {
@@ -40,6 +42,7 @@ const sliderConfig = {
             this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
         },
 
+        // Navigate through thumbnails
         thumbNavClick: function(index) {
             this.activeImgIdx = index;
         },
@@ -58,8 +61,8 @@ const sliderConfig = {
     // After HTML has been mounted
     mounted() {
         // DOM Elements
-        this.carouselImg.push(...document.querySelectorAll('.ms_carousel-img'));
-        this.carouselNavImg.push(...document.querySelectorAll('.ms_carousel-nav-img'));
+        this.carouselImg.push(...document.querySelectorAll(CAROUSEL_IMG_SELECTOR));
+        this.carouselNavImg.push(...document.querySelectorAll(THUMBNAIL_IMG_SELECTOR));
 
         this.autoSlider();
     },

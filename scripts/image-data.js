@@ -7,8 +7,8 @@ const CAROUSEL_IMG_PATH = './assets/img/';
 const CAROUSEL_THUMBNAIL_PATH = './assets/img/thumbnails/';
 
 // DOM-IDs
-const CAROUSEL_IMG_ID = 'carousel-images';
-const THUMBNAIL_IMG_ID = 'carousel-nav-images';
+const CAROUSEL_IMG_SELECTOR = '.ms_carousel-img';
+const THUMBNAIL_IMG_SELECTOR = '.ms_carousel-nav-img';
 
 // Images Data
 const imgData = [

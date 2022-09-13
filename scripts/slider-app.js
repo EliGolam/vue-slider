@@ -25,6 +25,10 @@ const sliderConfig = {
         imgCollection: createCollection(imgData),
         imgThumbnails: createCollection(imgData, CAROUSEL_THUMBNAIL_PATH),
 
+        // DOM Elements
+        // carouselImg: document.querySelectorAll('.ms_carousel-img'),
+        // carouselNavImg: document.querySelectorAll('.ms_carousel-nav-img'),
+
         // Collections Classes
         imgClass: IMG_CLASS_LIST,
         thumbClass: THUMBNAIL_CLASS_LIST,
@@ -72,5 +76,4 @@ const carouselImg = document.querySelectorAll('.ms_carousel-img');
 const carouselNavImg = document.querySelectorAll('.ms_carousel-nav-img');
 carouselImg[activeImgIdx].classList.add('active');
 carouselNavImg[activeImgIdx].classList.add('active');
-
 console.log('DEBUG - Carousel', carouselImg, carouselNavImg);

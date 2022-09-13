@@ -2,7 +2,7 @@
 /*#region GENERAL DEFAULTS  */
 body {
     font: var(--fontweight-default) var(--fontsize-default) var(--fontfamily-default);
-    columns: var(--clr-dark-grey);
+    color: var(--clr-dark-grey);
 }
 /*#endregion GENERAL DEFAULTS  */
 /* --------------------------------------------------------------------------------- */
@@ -22,21 +22,129 @@ body {
 
 /* --------------------------------------------------------------------------------- */
 /*#region COMPOSITION */
+.ms_main-container {
+    min-width: 100%;
+    height: 100vh;
+    overflow: hidden;
 
+    position: relative;
+}
 /*#endregion COMPOSITION */
 /* --------------------------------------------------------------------------------- */
 
 
 /* --------------------------------------------------------------------------------- */
 /*#region BLOCKS: component specific rules */
+/*#region carousel */
+.ms_carousel-container {
+    position: relative;
+}
+
+
+.ms_carousel-images {
+    height: 100vh;
+    position: relative;
+}
+
+.ms_carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    position: absolute;
+        top: 0;
+
+    opacity: 0;
+}
+
+.ms_carousel-img.active {
+    opacity: 1;
+}
+
+
+.ms_carousel-buttons{
+    position: absolute;
+        top: 0;
+        left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.ms_carousel-btn {
+    display: none;
+}
+
+.ms_carousel-btn.ms_previous-up,
+.ms_carousel-btn.ms_next-down {
+    width: 100%;
+    display: inline-block;
+}
+/*#endregion carousel */
+.ms_carousel-nav-images {
+    position: absolute;
+        bottom: 50%;
+        right: 2em;
+    transform: translate(0, 50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    height: 60%;
+}
+
+.ms_carousel-nav-item {
+    height: calc(100% / 5);
+    aspect-ratio: 9 / 16;
+}
+
+.ms_carousel-nav-img {
+    object-fit: cover;
+}
+/*#region carousel-nav */
+
+/*#endregion carousel-nav */
 /*#endregion BLOCKS: component specific rules */
 /* --------------------------------------------------------------------------------- */
 
 
 /* --------------------------------------------------------------------------------- */
 /*#region MEDIA QUERIES */
-/* @media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 768px) {
+    .ms_carousel-buttons {
+        flex-direction: row;
+    }
 
-} */
+    .ms_carousel-btn.ms_previous-up,
+    .ms_carousel-btn.ms_next-down {
+        display: none;
+    }
+
+    .ms_carousel-btn.ms_previous-left,
+    .ms_carousel-btn.ms_next-right {
+        height: 100%;
+        display: inline-block;
+    }
+
+    .ms_carousel-nav-images {
+            bottom: 1.4em;
+            right: 50%;
+        transform: translate(50%, 0);
+    
+        flex-direction: row;
+        height: auto;
+        width: 60%;
+        max-width: 500px;
+    }
+    
+    .ms_carousel-nav-item {
+        width: calc(100% / 5);
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+} 
 /*#endregion MEDIA QUERIES */
 /* --------------------------------------------------------------------------------- */

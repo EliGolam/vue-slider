@@ -57,12 +57,24 @@
                 
                 <!--#region carousel-images -->
                 <div id="carousel-images" class="ms_carousel-images">
-                    <img v-for="(image, index) in imgCollection" class="ms_carousel-img img-fluid" :class="activeImg(index)" :src="image.url" :alt="image.description">
+
+                    <img 
+                        v-for="(image, index) in imgCollection" 
+                        class="ms_carousel-img img-fluid" 
+                        :class="activeImg(index)" 
+                        :src="image.url" 
+                        :alt="image.description"
+                    />
+
                 </div>
                 <!--#endregion carousel-images -->
 
                 <!--#region carousel-buttons -->
-                <div class="ms_carousel-buttons"> 
+                <div class="ms_carousel-buttons"
+                    @mouseover="toggleAnimation('off')" 
+                    @mouseleave="toggleAnimation('on')"
+                > 
+                
                     <!-- Slider previous button -->
                     <div @click="moveImg('previous')" class="ms_previous-button">
                         <button class="ms_carousel-btn ms_previous-left btn btn-primary" type="button" role="button" aria-label="Previous">
@@ -99,8 +111,18 @@
             <nav id="carousel-nav" class="ms_carousel-nav">
                 <h3 class="visually-hidden">Carousel Thumbnails</h3>
 
-                <div id="carousel-nav-images" class="ms_carousel-nav-images">
-                    <img @click="thumbNavClick(index)" v-for="(thumbnail, index) in imgThumbnails" class="ms_carousel-nav-img ms_carousel-nav-item img-thumbnail" :class="activeImg(index)" :src="thumbnail.url" :alt="thumbnail.description">
+                <div id="carousel-nav-images" class="ms_carousel-nav-images"
+                    @mouseover="toggleAnimation('off')" 
+                    @mouseleave="toggleAnimation('on')">
+
+                    <img 
+                        @click="thumbNavClick(index)" 
+                        v-for="(thumbnail, index) in imgThumbnails" 
+                        class="ms_carousel-nav-img ms_carousel-nav-item img-thumbnail" 
+                        :class="activeImg(index)" :src="thumbnail.url" 
+                        :alt="thumbnail.description"
+                    />
+                    
                 </div>
             </nav>
             <!--#endregion carusel-nav -->

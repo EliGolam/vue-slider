@@ -2,6 +2,8 @@
 
 ## Versions
 
+### 1.0.2: Animation paused on hover
+
 ### 1.0.1: Added some documentation and comment
 
 ### 1.0: Completed Project in Vue

@@ -55,16 +55,24 @@ const sliderConfig = {
             } else {
                 clearInterval(this.autoSlideInterval);
             }
+        },
+
+        toggleAnimation: function (action) {
+            console.log('TOGGLE');
+            if (action === 'off') {
+                console.log('DEBUG - Enter Mouse');
+                clearInterval(this.autoSlideInterval);
+            } else if (action === 'on') {
+                console.log('DEBUG - Leave Mouse');
+                this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
+            }
+            
         }
     },
 
     // After HTML has been mounted
     mounted() {
-        // DOM Elements
-        this.carouselImg.push(...document.querySelectorAll(CAROUSEL_IMG_SELECTOR));
-        this.carouselNavImg.push(...document.querySelectorAll(THUMBNAIL_IMG_SELECTOR));
-
-        this.autoSlider();
+        this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
     },
 };
 

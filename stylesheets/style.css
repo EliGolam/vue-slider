@@ -94,6 +94,8 @@ body {
     flex-direction: column;
     gap: .5em;
     height: 60%;
+
+    cursor: pointer;
 }
 
 .ms_carousel-nav-item {

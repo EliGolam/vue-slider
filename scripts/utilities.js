@@ -7,11 +7,26 @@ class Image {
         this.title = title;
         this.url = url;
         this.description = description;
+        this.active = 'active';
     }
 }
 
 
 // FUNCTIONS
+function createCollection(data, newPath) {
+    const collection = [];
+
+    data.forEach((element, i) => {
+        collection.push(new Image(...element));
+
+        if(newPath !== undefined) {
+            collection[i].url = generateImagePath(newPath, IMG_FORMAT, i);
+        }
+    });
+    return collection;
+}
+
+
 function buildCarousel(imgCollection, imgThumbnails, activeIdx) {
     buildCollectionDOM(imgCollection, CAROUSEL_IMG_ID, activeIdx);
     buildCollectionDOM(imgThumbnails, THUMBNAIL_IMG_ID, activeIdx);
@@ -36,24 +51,12 @@ function buildCollectionDOM(collectionArray, containerDomId, activeIndex) {
 
 
 function generateImagePath (folderPath, imgFormat, imageIndex) {
+    if(folderPath === undefined || folderPath === '' || folderPath === null) return null;
     imageIndex++; // Necessary because the images start counting from 01 instead of 00
     const filename = imageIndex < 10 ? '0' + imageIndex : imageIndex;
     const url = folderPath + filename + imgFormat;
     return url;
 } 
-
-
-function generateImagePaths (amountImages, path, imgFormat) {
-    const imgPaths = [];
-
-    for(let i = 1; i <= amountImages; i++) {
-        const filename = i < 10 ? '0' + i : i;
-        const url = path + filename + imgFormat;
-        imgPaths.push(url);
-    }
-
-    return imgPaths;
-}
 
 
 function moveCarousel (imgs, nav, direction) {

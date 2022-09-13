@@ -55,6 +55,7 @@ body {
         top: 0;
 
     opacity: 0;
+    transition: opacity 200ms ease;
 }
 
 .ms_carousel-img.active {
@@ -103,8 +104,18 @@ body {
     aspect-ratio: 9 / 16;
 }
 
+.ms_carousel-nav-img.active {
+    opacity: 1;
+}
+
 .ms_carousel-nav-img {
     object-fit: cover;
+    opacity: .5;
+    transition: opacity 200ms ease;
+}
+
+.ms_carousel-nav-img:hover {
+    opacity: .8;
 }
 /*#region carousel-nav */
 

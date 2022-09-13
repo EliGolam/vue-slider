@@ -25,7 +25,6 @@ function createCollection(data, newPath) {
     return collection;
 }
 
-
 function generateImagePath (folderPath, imgFormat, imageIndex) {
     if(folderPath === undefined || folderPath === '' || folderPath === null) return null;
     imageIndex++; // Necessary because the images start counting from 01 instead of 00

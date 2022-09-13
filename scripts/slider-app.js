@@ -2,7 +2,7 @@
 console.log('SCRIPT - slider-app.js: Loaded!');
 
 // Carousel SETTINGS
-const SLIDE_TIMER = 5000; // in ms
+const SLIDE_TIMER = 10 * 1000; // in ms
 // let activeImgIdx = 0;
 let isSlideForward = true;
 let autoSlideInterval;
@@ -35,7 +35,9 @@ const sliderConfig = {
 
         // Next and Previous Buttons
         moveImg: function(direction) {
-            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, direction);
+            clearInterval(this.autoSlideInterval);
+            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, direction);  
+            this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
         },
 
         thumbNavClick: function(index) {
@@ -46,9 +48,9 @@ const sliderConfig = {
         autoSlider: function() {
             if(this.isAutoSliderOn) {
                 let direction = isSlideForward ? 'next' : 'previous';
-                this.autoSlideInterval = setInterval(this.moveImg, SLIDE_TIMER, direction);
+                this.moveImg(direction);
             } else {
-                clearInterval(autoSlideInterval);
+                clearInterval(this.autoSlideInterval);
             }
         }
     },

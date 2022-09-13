@@ -10,12 +10,6 @@ const CAROUSEL_THUMBNAIL_PATH = './assets/img/thumbnails/';
 const CAROUSEL_IMG_ID = 'carousel-images';
 const THUMBNAIL_IMG_ID = 'carousel-nav-images';
 
-// CSS Class List
-const IMG_CLASS_LIST = ['ms_carousel-img', 'img-fluid']; 
-const THUMBNAIL_CLASS_LIST = ['ms_carousel-nav-img', 'ms_carousel-nav-item', 'img-thumbnail'];
-
-
-
 // Images Data
 const imgData = [
     ['Sunflower Field', 'Woman with black hair seen from the back in an endless sunflower field'],

@@ -2,6 +2,8 @@
 
 ## Versions
 
+### 1.0: Completed Project in Vue
+
 ### 0.9.7: Re-Added auto Slider
 
 ### 0.9.6: Readded Thumbnail navigation

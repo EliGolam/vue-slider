@@ -35,10 +35,9 @@ function generateImagePath (folderPath, imgFormat, imageIndex) {
     return url;
 } 
 
-/*
+
 function moveCarousel (imgs, nav, direction) {
-    // Clear previous Animation
-    clearInterval(autoSlideInterval);
+    
 
     for (let imgIdx = 0; imgIdx < imgs.length; imgIdx++) {
         console.log('DEBUG - renderImages: OK!');
@@ -60,15 +59,12 @@ function moveCarousel (imgs, nav, direction) {
         nav[imgIdx].classList.remove('active');
         break;   
     }
-
-    autoSlideInterval = setInterval(autoSlide, SLIDE_TIMER);
 }
-*/
 
-// function autoSlide (imgs, nav) {
-//     const direction = isSlideForward ? 'next' : 'previous';
-//     moveCarousel(imgs, nav, direction);
-// }
+function autoSlide (imgs, nav) {
+    const direction = isSlideForward ? 'next' : 'previous';
+    moveCarousel(imgs, nav, direction);
+}
 
 
 function getNextIndex(array, index, change) {

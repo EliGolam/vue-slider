@@ -2,10 +2,9 @@
 console.log('SCRIPT - slider-app.js: Loaded!');
 
 // Carousel SETTINGS
-const SLIDE_TIMER = 2000; // in ms
+const SLIDE_TIMER = 5000; // in ms
 let activeImgIdx = 0;
 let isSlideForward = true;
-let autoSlideInterval;
 
 // Vue APP
 const sliderConfig = {
@@ -29,38 +28,11 @@ const sliderConfig = {
         // Next and Previous Buttons
         next: function() {
             console.log('DEBUG - next');
-            this.moveCarousel(this.carouselImg, this.carouselNavImg, 'next');
+            moveCarousel(this.carouselImg, this.carouselNavImg, 'next');
         },
         previous: function() {
             console.log('DEBUG - previous');
-            this.moveCarousel(this.carouselImg, this.carouselNavImg, 'previous');
-        },
-
-        moveCarousel: function (direction) {
-            // Clear previous Animation
-            clearInterval(autoSlideInterval);
-        
-            for (let imgIdx = 0; imgIdx < this.carouselImg.length; imgIdx++) {
-                // Define direction: 
-                direction = (direction === 'previous' || direction === 'back' || direction === -1) ? -1 : 1;
-        
-                // Find currently active image
-                if (!this.carouselImg[imgIdx].classList.contains('active')) continue;
-        
-                // When active image is found we need to make sure the new image will not be out of bounds
-                activeImgIdx = getNextIndex(this.carouselImg, imgIdx, direction);
-        
-                // Activate new image on carousel trhough position
-                this.carouselImg[activeImgIdx].classList.add('active');
-                this.carouselNavImg[activeImgIdx].classList.add('active');
-        
-                // Remove previously active image
-                this.carouselImg[imgIdx].classList.remove('active');
-                this.carouselNavImg[imgIdx].classList.remove('active');
-                break;   
-            }
-        
-            autoSlideInterval = setInterval(this.autoSlide, SLIDE_TIMER);
+            moveCarousel(this.carouselImg, this.carouselNavImg, 'previous');
         },
 
         // Navigation through Thumbnails
@@ -80,13 +52,8 @@ const sliderConfig = {
                     this.carouselNavImg[activeImgIdx].classList.add('active');
                 })
             }
-        },
-        
-        // AutoSlide
-        autoSlide: function() {
-            const direction = isSlideForward ? 'next' : 'previous';
-            this.moveCarousel(direction);
         }
+        // Function Autoplay
     },
 
     // After HTML has been mounted
@@ -98,8 +65,8 @@ const sliderConfig = {
 
         this.carouselImg[activeImgIdx].classList.add('active');
         this.carouselNavImg[activeImgIdx].classList.add('active');
-        
-        autoSlideInterval = setInterval(this.autoSlide, SLIDE_TIMER);
+        // Autoplay
+        // this.autoPlay();
     },
 };
 

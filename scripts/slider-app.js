@@ -3,7 +3,7 @@ console.log('SCRIPT - slider-app.js: Loaded!');
 
 // Carousel SETTINGS
 const SLIDE_TIMER = 5000; // in ms
-let activeImgIdx = 0;
+// let activeImgIdx = 0;
 let isSlideForward = true;
 let autoSlideInterval;
 
@@ -19,38 +19,29 @@ const sliderConfig = {
         // Node Lists
         carouselImg: [],
         carouselNavImg: [],
-        
-        // Collections Classes
-        imgClass: IMG_CLASS_LIST,
-        thumbClass: THUMBNAIL_CLASS_LIST,
+
+        activeImgIdx: 0,
     },
 
     methods: {
-        // Next and Previous Buttons
-        next: function() {
-            moveCarousel(this.carouselImg, this.carouselNavImg, 'next');
-        },
-        previous: function() {
-            moveCarousel(this.carouselImg, this.carouselNavImg, 'previous');
+        // Active Image
+        activeImg: function (index) {
+            console.log('DEBUG - ELEMENT', index, this.activeImgIdx);
+            return (index === this.activeImgIdx) ? 'active' : '';
         },
 
-        // Navigation through Thumbnails
-        thumbNavClick: function() {
-            for (let imgIdx = 0; imgIdx < this.carouselNavImg.length; imgIdx++) {
-                this.carouselNavImg[imgIdx].addEventListener('click', () => {
-                    activeImgIdx = imgIdx; // When the thumbnail is clicked, assign the thumbnail's index as the new active index
-            
-                    for (let j = 0; j < this.carouselNavImg.length; j++) {
-                        if (this.carouselNavImg[j].classList.contains('active')) { // Remove the previously active element
-                            this.carouselImg[j].classList.remove('active');
-                            this.carouselNavImg[j].classList.remove('active');
-                        }
-                    }
-                    this.carouselImg[activeImgIdx].classList.add('active');
-                    this.carouselNavImg[activeImgIdx].classList.add('active');
-                })
-            }
-        }
+        // Next and Previous Buttons
+        next: function() {
+            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, 1);
+            console.log('DEBUG - Next', this.activeImgIdx);
+        },
+
+        previous: function() {
+            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, -1);
+            console.log('DEBUG - Previous', this.activeImgIdx);
+        },
+
+        
         // Function Autoplay
     },
 
@@ -59,11 +50,6 @@ const sliderConfig = {
         // DOM Elements
         this.carouselImg.push(...document.querySelectorAll('.ms_carousel-img'));
         this.carouselNavImg.push(...document.querySelectorAll('.ms_carousel-nav-img'));
-
-        this.carouselImg[activeImgIdx].classList.add('active');
-        this.carouselNavImg[activeImgIdx].classList.add('active');
-        
-        autoSlideInterval = setInterval(autoSlide, SLIDE_TIMER, this.carouselImg, this.carouselNavImg);
     },
 };
 

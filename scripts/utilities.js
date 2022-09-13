@@ -7,7 +7,6 @@ class Image {
         this.title = title;
         this.url = url;
         this.description = description;
-        this.active = 'active';
     }
 }
 

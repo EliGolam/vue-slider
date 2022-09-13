@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="./stylesheets/style.css" type="text/css">
 
     <!-- My Scripts -->
-    <script src="./scripts/utilities.js" type="text/javascript" async></script>
+    <script src="./scripts/utilities.js" type="text/javascript" defer></script>
     <script src="./scripts/image-data.js" type="text/javascript" defer></script>
     <script src="./scripts/slider-app.js" type="text/javascript" defer></script>
     <!--#endregion Stylesheets and Scripts -->
@@ -57,7 +57,7 @@
                 
                 <!--#region carousel-images -->
                 <div id="carousel-images" class="ms_carousel-images">
-                    <img v-for="image in imgCollection" :class="imgClass" :src="image.url" :alt="image.description">
+                    <img v-for="(image, index) in imgCollection" class="ms_carousel-img img-fluid" :class="activeImg(index)" :src="image.url" :alt="image.description">
                 </div>
                 <!--#endregion carousel-images -->
 
@@ -100,7 +100,7 @@
                 <h3 class="visually-hidden">Carousel Thumbnails</h3>
 
                 <div id="carousel-nav-images" class="ms_carousel-nav-images">
-                    <img @click="thumbNavClick" v-for="thumbnail in imgThumbnails" :class="thumbClass" :src="thumbnail.url" :alt="thumbnail.description">
+                    <!-- <img @click="thumbNavClick" v-for="thumbnail in imgThumbnails" class="ms_carousel-nav-img ms_carousel-nav-item img-thumbnail" :class="thumbClass" :src="thumbnail.url" :alt="thumbnail.description"> -->
                 </div>
             </nav>
             <!--#endregion carusel-nav -->

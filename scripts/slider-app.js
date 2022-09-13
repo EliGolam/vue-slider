@@ -5,6 +5,7 @@ console.log('SCRIPT - slider-app.js: Loaded!');
 const SLIDE_TIMER = 5000; // in ms
 let activeImgIdx = 0;
 let isSlideForward = true;
+let autoSlideInterval;
 
 // Vue APP
 const sliderConfig = {
@@ -65,8 +66,8 @@ const sliderConfig = {
 
         this.carouselImg[activeImgIdx].classList.add('active');
         this.carouselNavImg[activeImgIdx].classList.add('active');
-        // Autoplay
-        // this.autoPlay();
+        
+        autoSlideInterval = setInterval(autoSlide, SLIDE_TIMER, this.carouselImg, this.carouselNavImg);
     },
 };
 

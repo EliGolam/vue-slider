@@ -37,7 +37,8 @@ function generateImagePath (folderPath, imgFormat, imageIndex) {
 
 
 function moveCarousel (imgs, nav, direction) {
-    
+    // Clear previous autoSlide
+    clearInterval(autoSlideInterval);
 
     for (let imgIdx = 0; imgIdx < imgs.length; imgIdx++) {
         console.log('DEBUG - renderImages: OK!');
@@ -59,6 +60,8 @@ function moveCarousel (imgs, nav, direction) {
         nav[imgIdx].classList.remove('active');
         break;   
     }
+
+    autoSlideInterval = setInterval(autoSlide, SLIDE_TIMER, imgs, nav);
 }
 
 function autoSlide (imgs, nav) {

@@ -41,7 +41,9 @@ const sliderConfig = {
             console.log('DEBUG - Previous', this.activeImgIdx);
         },
 
-        
+        thumbNavClick: function(index) {
+            this.activeImgIdx = index;
+        }
         // Function Autoplay
     },
 

@@ -2,6 +2,8 @@
 
 ## Versions
 
+### 0.9.6: Readded Thumbnail navigation
+
 ### 0.9.5: Refactored next and previous functions in VueJS app
 
 ### 0.9.4: Compressed images for improved performance

@@ -100,7 +100,7 @@
                 <h3 class="visually-hidden">Carousel Thumbnails</h3>
 
                 <div id="carousel-nav-images" class="ms_carousel-nav-images">
-                    <!-- <img @click="thumbNavClick" v-for="thumbnail in imgThumbnails" class="ms_carousel-nav-img ms_carousel-nav-item img-thumbnail" :class="thumbClass" :src="thumbnail.url" :alt="thumbnail.description"> -->
+                    <img @click="thumbNavClick(index)" v-for="(thumbnail, index) in imgThumbnails" class="ms_carousel-nav-img ms_carousel-nav-item img-thumbnail" :class="activeImg(index)" :src="thumbnail.url" :alt="thumbnail.description">
                 </div>
             </nav>
             <!--#endregion carusel-nav -->

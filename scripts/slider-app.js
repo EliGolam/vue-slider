@@ -28,11 +28,9 @@ const sliderConfig = {
     methods: {
         // Next and Previous Buttons
         next: function() {
-            console.log('DEBUG - next');
             moveCarousel(this.carouselImg, this.carouselNavImg, 'next');
         },
         previous: function() {
-            console.log('DEBUG - previous');
             moveCarousel(this.carouselImg, this.carouselNavImg, 'previous');
         },
 
@@ -40,7 +38,6 @@ const sliderConfig = {
         thumbNavClick: function() {
             for (let imgIdx = 0; imgIdx < this.carouselNavImg.length; imgIdx++) {
                 this.carouselNavImg[imgIdx].addEventListener('click', () => {
-                    console.log('DEBUG - carouselNavImg Click: OK!');
                     activeImgIdx = imgIdx; // When the thumbnail is clicked, assign the thumbnail's index as the new active index
             
                     for (let j = 0; j < this.carouselNavImg.length; j++) {
@@ -62,7 +59,6 @@ const sliderConfig = {
         // DOM Elements
         this.carouselImg.push(...document.querySelectorAll('.ms_carousel-img'));
         this.carouselNavImg.push(...document.querySelectorAll('.ms_carousel-nav-img'));
-        console.log('Carousel Img', this.carouselImg, this.carouselNavImg);
 
         this.carouselImg[activeImgIdx].classList.add('active');
         this.carouselNavImg[activeImgIdx].classList.add('active');

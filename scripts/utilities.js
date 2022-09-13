@@ -41,7 +41,6 @@ function moveCarousel (imgs, nav, direction) {
     clearInterval(autoSlideInterval);
 
     for (let imgIdx = 0; imgIdx < imgs.length; imgIdx++) {
-        console.log('DEBUG - renderImages: OK!');
         // Define direction: 
         direction = (direction === 'previous' || direction === 'back' || direction === -1) ? -1 : 1;
 

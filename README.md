@@ -2,6 +2,10 @@
 
 ## Versions
 
+### 0.9.4: Compressed images for improved performance
+
+* Reduced size by ~66%
+
 ### 0.9.3: Auto Slide added
 
 ### 0.9.2: Added thumbnail navigation

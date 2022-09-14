@@ -2,6 +2,10 @@
 
 ## Versions
 
+### 1.0.4: Minor Bug
+
+* Accidentally removed Vue APP from JS
+
 ### 1.0.3: Refactored CSS and JS Code
 
 * Added CSS documentation and removed unnecessary properties [style.css]

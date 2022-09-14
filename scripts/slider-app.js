@@ -27,6 +27,7 @@ const sliderConfig = {
         autoSlideInterval: undefined,
     },
 
+    // METHODS
     methods: {
         // Active Image
         activeImg: function (index) {
@@ -46,7 +47,7 @@ const sliderConfig = {
             this.activeImgIdx = index;
         },
 
-        // Function Autoplay
+        // AutoPlay FUNCTIONS
         autoSlider: function() {
             if(this.isAutoSliderOn) {
                 let direction = this.isForwardDir? 'next' : 'previous';
@@ -57,6 +58,7 @@ const sliderConfig = {
             }
         },
 
+        // Toggle Animation action on / off
         toggleAnimation: function (action) {
             if(action === 'off') {
                 this.deleteAnimationInverval();
@@ -66,10 +68,12 @@ const sliderConfig = {
             }    
         },
 
+        // Stop Animation
         deleteAnimationInverval: function () {
             clearInterval(this.autoSlideInterval);
         },
 
+        // Start Animation
         createAnimationInterval: function () {
             this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
         }
@@ -81,5 +85,4 @@ const sliderConfig = {
     },
 };
 
-const sliderApp = new Vue(sliderConfig);
-console.log('DEBUG - Slider ID', sliderApp);
+const slider = new Vue(sliderConfig);

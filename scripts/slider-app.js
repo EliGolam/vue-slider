@@ -3,9 +3,7 @@ console.log('SCRIPT - slider-app.js: Loaded!');
 
 // Carousel SETTINGS
 const SLIDE_TIMER = 10 * 1000; // in ms
-// let activeImgIdx = 0;
-let isSlideForward = true;
-let autoSlideInterval;
+
 
 // Vue APP
 const sliderConfig = {
@@ -26,7 +24,7 @@ const sliderConfig = {
         // Auto Slider Settings
         isForwardDir: true,
         isAutoSliderOn: true,
-        autoSlideInterval,
+        autoSlideInterval: undefined,
     },
 
     methods: {
@@ -37,9 +35,10 @@ const sliderConfig = {
 
         // Next and Previous Buttons
         moveImg: function(direction) {
-            clearInterval(this.autoSlideInterval);
-            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, direction);  
-            this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
+            this.activeImgIdx = getNextIndex(this.imgCollection, this.activeImgIdx, direction); 
+            
+            this.deleteAnimationInverval();
+            this.createAnimationInterval();
         },
 
         // Navigate through thumbnails
@@ -50,29 +49,35 @@ const sliderConfig = {
         // Function Autoplay
         autoSlider: function() {
             if(this.isAutoSliderOn) {
-                let direction = isSlideForward ? 'next' : 'previous';
+                let direction = this.isForwardDir? 'next' : 'previous';
                 this.moveImg(direction);
+
             } else {
-                clearInterval(this.autoSlideInterval);
+                this.deleteAnimationInverval();
             }
         },
 
         toggleAnimation: function (action) {
-            console.log('TOGGLE');
-            if (action === 'off') {
-                console.log('DEBUG - Enter Mouse');
-                clearInterval(this.autoSlideInterval);
-            } else if (action === 'on') {
-                console.log('DEBUG - Leave Mouse');
-                this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
+            if(action === 'off') {
+                this.deleteAnimationInverval();
             }
-            
+            else if (action === 'on') {
+                this.createAnimationInterval();
+            }    
+        },
+
+        deleteAnimationInverval: function () {
+            clearInterval(this.autoSlideInterval);
+        },
+
+        createAnimationInterval: function () {
+            this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
         }
     },
 
     // After HTML has been mounted
     mounted() {
-        this.autoSlideInterval = setInterval(this.autoSlider, SLIDE_TIMER);
+        this.createAnimationInterval();
     },
 };
 

@@ -2,6 +2,11 @@
 
 ## Versions
 
+### 1.0.3: Refactored CSS and JS Code
+
+* Added CSS documentation and removed unnecessary properties [style.css]
+* Added functions fro scalability and readability in JavaScript [slider-app.js]
+
 ### 1.0.2: Animation paused on hover
 
 ### 1.0.1: Added some documentation and comment
